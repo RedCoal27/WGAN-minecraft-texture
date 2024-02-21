@@ -1,0 +1,17 @@
+#!/bin/bash
+## nombre de noeuds
+#sbatch --nodes 1
+
+##nombre de coeurs
+#sbatch --cpus-per-task 2
+#durée de votre notebook
+#sbatch --time 48:00:00
+#nomde votre notebook
+#sbatch --job-name jupiter
+# on charge le module anaconda
+module load anaconda
+#activation environnement
+# source activate /home/amaillet/conda_env/test-3.11
+#on lance le serveur jupyter (sans le navigateur) sur le port 8080
+#on pouvait utiliser un autre port, de préférence supérieur à 8080
+jupyter notebook --no-browser --ip=$(hostname -s) --port=8080 --NotebookApp.allow_origin='*'
